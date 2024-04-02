@@ -20,23 +20,7 @@ https://www.youtube.com/watch?v=GCYYkOSKj80&list=PLuXY3ddo_8nzCVqXcTFqwcM5R0gZiM
 
 ## Main Classes
 
-### 1- class "Game"
-This is the main constructor of the game and includes its main logic and functionalties, with the assocciation of other classes 
-
-Items:
-- player
-  - Player(): 
-- board
-  - Board(): 
-- menu
-  - Menu(): 
-- player_index
-  - intger: only 1 or 2
-
-Methods:
-
--------------
-### 2- class "Player"
+### 1- class "Player"
 This class construct both players objects
 
 Items:
@@ -50,7 +34,7 @@ Methods:
 - set_symbol()
 
 -------------
-### 3- class "Board"
+### 2- class "Board"
 This class constructs, displays & modifies the game's main board
 
 Items:
@@ -63,7 +47,7 @@ Methods:
 - display()
 
 -------------
-### 4- class "Menu"
+### 3- class "Menu"
 This class displays the opening, each-turn menu & end-game menu
 
 Items:
@@ -72,6 +56,22 @@ Methods:
 - display_open()
 - display_turn()
 - display_end()
+
+-------------
+### 4- class "Game"
+This is the main constructor of the game and includes its main logic and functionalties, with the assocciation of other classes 
+
+Items:
+- player
+  - Player(): 
+- board
+  - Board(): 
+- menu
+  - Menu(): 
+- player_index
+  - intger: only 1 or 2
+
+Methods:
 
 -------------
 ## UML diagram
