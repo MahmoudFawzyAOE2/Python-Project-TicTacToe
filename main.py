@@ -37,14 +37,24 @@ class Board ():
 
 class Menu ():
     
-    pass
+    def display_main_menu(self):
+        print("Welcome to TicTacToe Game")
+        print("1- Start Game")
+        print("2- Quit Game")
+        choice = input("Enter your choice (1 or 2): ")
+        return choice
+    
+    def display_end_menu(self):
+        print("Game Over")
+        print("1- Start Game")
+        print("2- Quit Game")
+        choice = input("Enter your choice (1 or 2): ")
+        return choice
+        
+
 
 class Game ():
     
     pass
 
-P1 = Player()
-P1.set_name()
-P1.set_symbol()
-P1.print_player()
 
