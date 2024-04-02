@@ -27,11 +27,12 @@ Items:
 - name
   - string: only letters
 - symbol
-  - string: only a single character, no numbers
+  - string: only a single letter
 
 Methods:
 - set_name()
 - set_symbol()
+- print_player()
 
 -------------
 ### 2- class "Board"
