@@ -1,6 +1,6 @@
 # Python-Project-TicTacToe
 
-This is a Project of making a 2-plater TicTacToe game using python and OOP principles
+This is a Project of making a 2-player TicTacToe game using python and OOP principles
 
 ## Main Idea
 
@@ -21,44 +21,59 @@ https://www.youtube.com/watch?v=GCYYkOSKj80&list=PLuXY3ddo_8nzCVqXcTFqwcM5R0gZiM
 ## Main Classes
 
 ### 1- class "Game"
-this is the main constructor of the game and includes its main logic and functionalties, with the assocciation of other classes 
+This is the main constructor of the game and includes its main logic and functionalties, with the assocciation of other classes 
 
-items:
+Items:
+- player
+  - Player(): 
+- board
+  - Board(): 
+- menu
+  - Menu(): 
+- player_index
+  - intger: only 1 or 2
 
+Methods:
 
-methods:
-
-
+-------------
 ### 2- class "Player"
-this class construct both players objects
+This class construct both players objects
 
-items:
-name
-symbol
+Items:
+- name
+  - string: only letters
+- symbol
+  - string: only a single character, no numbers
 
-methods:
+Methods:
+- set_name()
+- set_symbol()
 
-
+-------------
 ### 3- class "Board"
-this class constructs, displays & modifies the game's main board
+This class constructs, displays & modifies the game's main board
 
-items:
-cell
+Items:
+- board
+  - a list of lists [3*3] that contains 
 
-methods:
-insert_symbol
-check_win
-display
+Methods:
+- insert_symbol()
+- check_win()
+- display()
 
-### 2- class "Menu"
-this class displays the opening menu & 
+-------------
+### 4- class "Menu"
+This class displays the opening, each-turn menu & end-game menu
 
-items:
+Items:
 
-methods:
-display_main
-display_play
+Methods:
+- display_open()
+- display_turn()
+- display_end()
 
+-------------
 ## UML diagram
 
 
