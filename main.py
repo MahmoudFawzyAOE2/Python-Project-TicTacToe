@@ -7,10 +7,12 @@ Created on Tue Apr  2 19:45:29 2024
 
 class Player():
     
+    #initialization
     def __init__ (self, name = "Anonymous", symbol = "&"):
         self._name = name
         self._symbol = symbol
-        
+    
+    # methods
     def set_name(self):
         while True:
             name = input ("Enter your Name: ")
@@ -33,7 +35,26 @@ class Player():
 
 class Board ():
     
-    pass
+    def __init__ (self, board = [1,2,3,4,5,6,7,8,9]):
+        self._board = board
+        
+    def display_board(self):
+        display = """
+         {} | {} | {}
+        -----------
+         {} | {} | {}
+        -----------
+         {} | {} | {}      
+        """
+        print(display.format(*self._board))
+        
+    def insert_symbol(self, symbol, position):
+        
+        index = position - 1
+        self._board[index] = symbol
+        
+        
+
 
 class Menu ():
     
@@ -41,15 +62,23 @@ class Menu ():
         print("Welcome to TicTacToe Game")
         print("1- Start Game")
         print("2- Quit Game")
-        choice = input("Enter your choice (1 or 2): ")
-        return choice
+        while True:
+            choice = input("Enter your choice (1 or 2): ")
+            if choice == "1" or choice == "2":
+                return choice
+            else:
+                print("Invalid Input!")
     
     def display_end_menu(self):
         print("Game Over")
         print("1- Start Game")
         print("2- Quit Game")
-        choice = input("Enter your choice (1 or 2): ")
-        return choice
+        while True:
+            choice = input("Enter your choice (1 or 2): ")
+            if choice == "1" or choice == "2":
+                return choice
+            else:
+                print("Invalid Input!")
         
 
 
@@ -57,4 +86,8 @@ class Game ():
     
     pass
 
+b = Board()
+b.display_board()
 
+b.insert_symbol("X", 5)
+b.display_board()

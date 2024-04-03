@@ -43,9 +43,10 @@ Items:
   - a list of lists [3*3] that contains 
 
 Methods:
+
+- display_board()
 - insert_symbol()
-- check_win()
-- display()
+- reset_board()
 
 -------------
 ### 3- class "Menu"
@@ -55,7 +56,6 @@ Items:
 
 Methods:
 - display_open()
-- display_turn()
 - display_end()
 
 -------------
@@ -73,7 +73,7 @@ Items:
   - intger: only 1 or 2
 
 Methods:
-
+- check_win()
 -------------
 ## UML diagram
 
