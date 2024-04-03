@@ -49,16 +49,22 @@ class Board ():
         print(display.format(*self._board))
         
     def insert_symbol(self, symbol, position):
-        
         index = position - 1
-        self._board[index] = symbol
         
+        # validate the location before adding the symbol
+        if self._board[index].isnum() :
+            self._board[index] = symbol
+            return True
+        else: 
+            print("invalid location!, pls try again")
+            return False
         
-
+    def clear_board(self):
+        self._board = [1,2,3,4,5,6,7,8,9]
 
 class Menu ():
     
-    def display_main_menu(self):
+    def display_start_menu(self):
         print("Welcome to TicTacToe Game")
         print("1- Start Game")
         print("2- Quit Game")
@@ -80,14 +86,38 @@ class Menu ():
             else:
                 print("Invalid Input!")
         
-
-
 class Game ():
     
-    pass
+    def __init__ (self):
+        self._board = Board()
+        self._menu = Menu()
+        self._players = [Player(), Player()]
+        self._current_player_index = 0
+        
+    def start_game(self):
+        choice = self._menu.display_start_menu()
+        if choice == "1":
+            self._players.set_players()
+            self.play_game()
+        else:
+            self.quit_game()
+  
+    def set_players(self, players):
+        for player in self.players:
+            player.set_name()
+            player.set_symbol()
+        
+    def play_game(self):
+        pass
+      
+    def quit_game(self):
+        pass
+        
+TTT = Game()        
+TTT.start_game()  
+        
+        
+        
+        
+        
 
-b = Board()
-b.display_board()
-
-b.insert_symbol("X", 5)
-b.display_board()
