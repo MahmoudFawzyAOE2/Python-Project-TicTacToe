@@ -27,7 +27,7 @@ class Player():
             if symbol.isalpha() and len(symbol)==1:
                 self._symbol = symbol
                 break
-            print("invalid Name!")
+            print("invalid Symbol!")
             
     def print_player(self):
         print(f"Name: {self._name}")
@@ -97,21 +97,66 @@ class Game ():
     def start_game(self):
         choice = self._menu.display_start_menu()
         if choice == "1":
-            self._players.set_players()
+            self.set_players()
             self.play_game()
         else:
             self.quit_game()
   
-    def set_players(self, players):
-        for player in self.players:
-            player.set_name()
-            player.set_symbol()
+    def set_players(self):
         
+        # these lists are made to save the entered names and symbols
+        # so we can use them to prevent duplicated data 
+        names_list =[]
+        symbols_list =[]
+        for player in self._players:
+            print()
+            print("---data for player no #{} ---".format(self._players.index(player)+1))
+            
+            while True:
+                player.set_name()
+                
+                # check if name is already used
+                if player._name not in names_list:
+                    names_list.append(player._name)
+                    break
+                else:
+                    print("this name is already used")
+            
+            while True:
+                player.set_symbol()
+                
+                # check if symbol is already used
+                if player._symbol not in symbols_list:
+                    symbols_list.append(player._symbol)
+                    break
+                else:
+                    print("this symbol is already used")
+            
+            
     def play_game(self):
-        pass
-      
+        
+        while True:
+            
+            
+            
+            self.check_win()
+     
+    def check_win(self):
+        win_conditions = [
+         [1,2,3],
+         [4,5,6],
+         [7,8,9],
+         [1,4,7],
+         [2,5,8],
+         [3,6,9],
+         [1,5,9],
+         [3,5,7]]
+        
+        for condition in win_conditions:
+            if 
+        
     def quit_game(self):
-        pass
+        print("Good Bye :) ")
         
 TTT = Game()        
 TTT.start_game()  
