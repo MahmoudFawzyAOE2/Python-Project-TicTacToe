@@ -160,6 +160,11 @@ class Game ():
         self._current_player_index = 0
         
     def start_game(self):
+        """
+        The initial block of the game.
+        this module asks the user if he wants to play or quit
+        if to play, the game sets players and starts the actual plying process
+        """
         choice = self._menu.display_start_menu()
         if choice == "1":
             self.set_players()
@@ -168,7 +173,9 @@ class Game ():
             self.quit_game()
   
     def set_players(self):
-        
+        """
+        This block is to set the names and symbols of both players.
+        """
         # these lists are made to save the entered names and symbols
         # so we can use them to prevent duplicated data 
         names_list =[]
@@ -177,6 +184,7 @@ class Game ():
             print()
             print("---data for player no #{} ---".format(self._players.index(player)+1))
             
+            # set the name 
             while True:
                 player.set_name()
                 
@@ -187,6 +195,7 @@ class Game ():
                 else:
                     print("this name is already used")
             
+            # set the symbol
             while True:
                 player.set_symbol()
                 
@@ -198,27 +207,39 @@ class Game ():
                     print("this symbol is already used")
                     
     def play_game(self):
-        
+        """
+        The main game loop.
+        each player take a turn in a loop until a win or draw condition accures
+        then, we display the result of the condition via get_winner() method
+        finally, if the user wants to replay, we do recursive relation via reset_game() module
+        """
         while True:
             self._current_player_index = (self._current_player_index + 1 ) % 2
             self.play_turn(self._current_player_index)
             
+            # checking win or draw condition
             condition = self.check_win_condition() or self.check_draw_condition()
             if condition :
                 self._board.display_board()
                 break
+        
+        # get the result of the condition (winner if win, display draw message if draw)
         self.get_winner(condition)
+        
+        # asking the user for the choice of restart or quit
         choice = self._menu.display_end_menu()
         if choice == "1":
-            self.reset_game()          
+            self.reset_game()   
+        else:
+            self.quit_game()
                 
     def play_turn(self, player_index):
-        
+        """
+        this module represents a single player turn played by a single player
+        """
         player = self._players[player_index]
-        
         self._board.display_board()
-        
-        print(f"{player._name}, Insert your symbol {player._symbol} in a cetain position")
+        print(f"{player._name}, Insert your symbol [{player._symbol}] in a cetain position")
         
         while True:
             position = input("Enter the number of the position: ")
@@ -228,23 +249,33 @@ class Game ():
                 break
         
     def check_draw_condition(self):
+        """
+        this module checks the draw condition
+        draw condition: all cells in the board are full of symbols
+        i.e. all the board list elements are alphabetical strings
+        """
+        
         board_list = "".join(map(str, self._board._board))
-        print(board_list)
         if board_list.isalpha():
             return 10
         return False
         
     def check_win_condition(self):
+        """
+        this module checks the win condition
+        win condition: all cells in a row, column, or digonal in the board are full of one symbol
+        """
         win_conditions = [
-         [1,2,3],
-         [4,5,6],
-         [7,8,9],
-         [1,4,7],
-         [2,5,8],
-         [3,6,9],
-         [1,5,9],
-         [3,5,7]]
+         [1,2,3], # row1
+         [4,5,6], # row2
+         [7,8,9], # row3 
+         [1,4,7], # column1
+         [2,5,8], # column2
+         [3,6,9], # column3
+         [1,5,9], # diagonal \
+         [3,5,7]] # diagonal /
         
+        # checking every single condition. when one occures, the module returns the cell holding the symbol
         for condition in win_conditions:
             positions = [place-1 for place in condition]
             if self._board._board[positions[0]] == self._board._board[positions[1]] == self._board._board[positions[2]]:
@@ -252,6 +283,9 @@ class Game ():
         return False
     
     def get_winner(self, cell):
+        """
+        this module evaluates the winner in case of a win or displayes the draw message  
+        """
         if cell != 10 : #someone has won
             symbol = self._board._board[cell-1]
             if symbol == self._players[0]._symbol: # the winning symbol belongs to P1
@@ -263,10 +297,17 @@ class Game ():
             print(f"It's a draw between {self._players[0]._name} and {self._players[1]._name}")
     
     def reset_game(self):
+        """
+        this module resets the game as a preparation for a new game with same player
+        clearing the board then recursing to the play_game() module """
         print("Resetting Game...")
         self._board.clear_board()
         self.play_game()
+        
     def quit_game(self):
+        """
+        Just a simple Good bye message to the user
+        """
         print("Good Bye :) ")
         
 TTT = Game()        

@@ -19,7 +19,7 @@ https://www.youtube.com/watch?v=GCYYkOSKj80&list=PLuXY3ddo_8nzCVqXcTFqwcM5R0gZiM
 
 
 ## Main Classes
-
+Note: c more details about the classes, items, and methods are provided in code docstrings
 ### 1- class "Player"
 This class construct both players objects
 
@@ -46,13 +46,11 @@ Methods:
 
 - display_board()
 - insert_symbol()
-- reset_board()
+- clear_board()
 
 -------------
 ### 3- class "Menu"
 This class displays the opening, each-turn menu & end-game menu
-
-Items:
 
 Methods:
 - display_open()
@@ -70,11 +68,21 @@ Items:
 - menu
   - Menu(): 
 - player_index
-  - intger: only 1 or 2
+  - intger: only 0 or 1
 
 Methods:
-- check_win()
+- start_game()
+- set_players()
+- play_game()
+- play_turn()
+- check_draw_condition()
+- check_win_condition()
+- get_winner()
+- reset_game()
+- quit_game()
+
 -------------
-## UML diagram
+## Sample Run
+ 
 
 
