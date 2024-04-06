@@ -83,6 +83,8 @@ Methods:
 
 -------------
 ## Sample Run
- 
+![image](https://github.com/MahmoudFawzyAOE2/Python-Project-TicTacToe/assets/76012086/bcf041de-ec7a-4e43-9eba-9d0dc662a3c7)
+
+
 
 
